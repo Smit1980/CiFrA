@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Суверенный ИИ в закрытом контуре под ключ — Цифровая защита</title>
+  <meta name="description" content="Разворачиваем локальные нейросети, RAG и компьютерное зрение на серверах заказчика без выхода в интернет. Под требования 152‑ФЗ, ФСТЭК и режима гостайны. Пилот на ваших данных за 2–3 недели.">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://smit1980.github.io/CiFrA/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://smit1980.github.io/CiFrA/">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Цифровая защита">
+  <meta property="og:title" content="Суверенный ИИ в закрытом контуре под ключ">
+  <meta property="og:description" content="Локальные LLM, RAG и компьютерное зрение на ваших серверах без выхода в интернет. Пилот за 2–3 недели.">
+  <meta property="og:image" content="https://smit1980.github.io/CiFrA/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon-512.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@200;400;600&family=Unbounded:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ООО «Цифровая Защита»",
+    "taxID": "9726063134",
+    "foundingDate": "2023",
+    "logo": "assets/img/logo-light.png",
+    "description": "Развёртывание локальных нейросетей, RAG систем и компьютерного зрения в закрытом контуре заказчика."
+  }
+  </script>
+  <script type="application/ld+json" id="faq-schema"></script>
+</head>
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[90] focus:rounded-pill focus:bg-iris focus:px-6 focus:py-3 focus:text-nav focus:font-semibold focus:uppercase">Перейти к содержанию</a>
+
+  <!-- ============ Навигация: прозрачная, прямо на чёрном ============ -->
+  <header class="absolute inset-x-0 top-0 z-50" id="top">
+    <nav class="page flex items-center gap-9 py-6" aria-label="Основная навигация">
+      <a href="#top" class="flex shrink-0 items-center" aria-label="Цифровая защита — на главную">
+        <img src="assets/img/logo-dark.webp" alt="Цифровая защита" width="160" height="49" class="h-9 w-auto">
+      </a>
+      <div class="ml-auto hidden items-center gap-7.5 lg:flex">
+        <a href="#resheniya" class="nav-link" data-spy>Решения</a>
+        <a href="#otrasli" class="nav-link" data-spy>Отрасли</a>
+        <a href="#bezopasnost" class="nav-link" data-spy>Безопасность</a>
+        <a href="#etapy" class="nav-link" data-spy>Этапы</a>
+        <a href="#garantii" class="nav-link" data-spy>Гарантии</a>
+        <a href="#faq" class="nav-link" data-spy>Вопросы</a>
+      </div>
+      <button type="button" class="btn-iris ml-auto hidden sm:inline-flex lg:ml-0" data-open-form>Консультация</button>
+      <button type="button" class="burger relative z-[60] ml-auto inline-flex h-11 w-11 flex-col items-center justify-center gap-1 text-bone sm:ml-0 lg:hidden" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu" id="burger">
+        <span class="block h-0.5 w-6 rounded bg-current"></span>
+        <span class="block h-0.5 w-6 rounded bg-current"></span>
+        <span class="block h-0.5 w-6 rounded bg-current"></span>
+      </button>
+    </nav>
+  </header>
+
+  <div id="mobile-menu" class="menu-panel fixed inset-0 z-40 flex flex-col bg-void/95 px-6 pb-12 pt-30 backdrop-blur-xl lg:hidden" aria-hidden="true">
+    <nav class="flex flex-col gap-3" aria-label="Мобильная навигация">
+      <a href="#resheniya" class="py-1.5 text-sub">Решения</a>
+      <a href="#otrasli" class="py-1.5 text-sub">Отрасли</a>
+      <a href="#bezopasnost" class="py-1.5 text-sub">Безопасность</a>
+      <a href="#etapy" class="py-1.5 text-sub">Этапы</a>
+      <a href="#garantii" class="py-1.5 text-sub">Гарантии</a>
+      <a href="#faq" class="py-1.5 text-sub">Вопросы</a>
+    </nav>
+    <button type="button" class="btn-iris mt-auto w-full" data-open-form>Получить консультацию</button>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ 1. Hero ============ -->
+    <section class="relative overflow-hidden pt-30 lg:min-h-[100svh] lg:pt-36" aria-labelledby="hero-title">
+      <div class="page relative grid items-center gap-9 pb-24 lg:grid-cols-12 lg:pb-30">
+        <div class="relative z-10 lg:col-span-7">
+          <p class="label">On‑Premises · Air‑Gapped · 152‑ФЗ</p>
+          <h1 id="hero-title" class="h-display mt-6">
+            Интеллект <br>внутри <br>периметра
+          </h1>
+          <p class="copy mt-9 max-w-copy text-bone">
+            Разворачиваем локальные нейросети, RAG и компьютерное зрение на ваших серверах без выхода в интернет. Под требования 152‑ФЗ, ФСТЭК и режима гостайны.
+          </p>
+          <div class="mt-9 flex flex-wrap items-center gap-x-9 gap-y-6">
+            <button type="button" class="btn-iris" data-open-form>
+              Получить консультацию <svg class="si text-2xl" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.4697 8.46967C12.7626 8.17678 13.2374 8.17678 13.5303 8.46967L16.5303 11.4697C16.8232 11.7626 16.8232 12.2374 16.5303 12.5303L13.5303 15.5303C13.2374 15.8232 12.7626 15.8232 12.4697 15.5303C12.1768 15.2374 12.1768 14.7626 12.4697 14.4697L14.1893 12.75H8C7.58579 12.75 7.25 12.4142 7.25 12C7.25 11.5858 7.58579 11.25 8 11.25H14.1893L12.4697 9.53033C12.1768 9.23744 12.1768 8.76256 12.4697 8.46967Z" clip-rule="evenodd"/></svg>
+            </button>
+            <a href="#resheniya" class="btn-ghost">Смотреть решения <svg class="si" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12.75 4C12.75 3.58579 12.4142 3.25 12 3.25C11.5858 3.25 11.25 3.58579 11.25 4L11.25 13.25H6.00002C5.69668 13.25 5.4232 13.4327 5.30711 13.713C5.19103 13.9932 5.25519 14.3158 5.46969 14.5303L11.4697 20.5303C11.6103 20.671 11.8011 20.75 12 20.75C12.1989 20.75 12.3897 20.671 12.5304 20.5303L18.5304 14.5303C18.7449 14.3158 18.809 13.9932 18.6929 13.713C18.5768 13.4327 18.3034 13.25 18 13.25H12.75L12.75 4Z"/></svg></a>
+          </div>
+          <dl class="mt-15 grid max-w-xl grid-cols-3 gap-6">
+            <div class="flex flex-col">
+              <dt class="copy order-last mt-1.5 text-sm text-ash">пилот на ваших данных</dt>
+              <dd class="text-body sm:text-h-xs">2–3 нед.</dd>
+            </div>
+            <div class="flex flex-col">
+              <dt class="copy order-last mt-1.5 text-sm text-ash">уходит за периметр</dt>
+              <dd class="text-body sm:text-h-xs">0 байт</dd>
+            </div>
+            <div class="flex flex-col">
+              <dt class="copy order-last mt-1.5 text-sm text-ash">выход после пилота</dt>
+              <dd class="text-body sm:text-h-xs">Без штрафов</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="relative -mx-6 aspect-square lg:col-span-5 lg:mx-0 lg:-mr-24 lg:scale-125" data-formation="atom" aria-hidden="true">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. Команда и стек ============ -->
+    <section class="pb-24 lg:pb-30" aria-label="Команда и технологии">
+      <div class="page reveal grid gap-12 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="label">Команда проекта</p>
+          <p class="mt-4.5 text-h-2xs">Руководитель — Денис Шандалин, эксперт по внедрению ИИ в бизнес и образование</p>
+          <a href="https://smit1980.github.io/vizitkaSD/" target="_blank" rel="noopener" class="btn-ghost mt-6">Подробнее о руководителе <svg class="si" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M5.46967 17.4697C5.17678 17.7626 5.17678 18.2374 5.46967 18.5303C5.76256 18.8232 6.23744 18.8232 6.53033 18.5303L13.5 11.5607L17.4697 15.5303C17.6842 15.7448 18.0068 15.809 18.287 15.6929C18.5673 15.5768 18.75 15.3033 18.75 15V6C18.75 5.58579 18.4142 5.25 18 5.25L9 5.25C8.69665 5.25 8.42318 5.43273 8.30709 5.71299C8.19101 5.99324 8.25517 6.31583 8.46967 6.53033L12.4393 10.5L5.46967 17.4697Z"/></svg></a>
+        </div>
+        <dl class="grid gap-9 sm:grid-cols-3 lg:col-span-7">
+          <div class="flex flex-col">
+            <dt class="copy order-last mt-3 text-mist">лет в управлении активами и бизнес‑процессами</dt>
+            <dd class="font-display text-h font-light tracking-[-0.03em]" data-countup>25+</dd>
+          </div>
+          <div class="flex flex-col">
+            <dt class="copy order-last mt-3 text-mist">специалистов обучено практике ИИ</dt>
+            <dd class="font-display text-h font-light tracking-[-0.03em]" data-countup>500+</dd>
+          </div>
+          <div class="flex flex-col">
+            <dt class="copy order-last mt-3 text-mist">программ ДПО для АО «Концерн ВКО „Алмаз‑Антей“»</dt>
+            <dd class="font-display text-h font-light tracking-[-0.03em]" data-countup>7</dd>
+          </div>
+        </dl>
+      </div>
+      <p class="page reveal mt-15 text-nav font-semibold uppercase leading-loose text-ash">
+        DeepSeek · Qwen · LLaMA · vLLM · PostgreSQL + pgvector · Qdrant · Milvus · NVIDIA H100 · DGX · RTX 6000 Pro Blackwell
+      </p>
+    </section>
+
+    <!-- ============ 3. Проблема → решение ============ -->
+    <section class="section" aria-labelledby="problem-title" data-formation="scatter" data-alpha="0.3">
+      <div class="page grid gap-15 lg:grid-cols-12">
+        <div class="reveal lg:sticky lg:top-12 lg:col-span-6 lg:self-start">
+          <p class="label">Проблема</p>
+          <h2 id="problem-title" class="h-section mt-6 lg:text-h-sm">Сотрудники уже пользуются нейросетями. Вопрос — чьими</h2>
+          <p class="copy mt-9 max-w-copy text-mist">Каждый запрос к публичному облачному ИИ уносит фрагмент кода, документации или персональных данных на чужие серверы. Закрытый контур снимает четыре риска сразу.</p>
+        </div>
+        <ol class="grid gap-15 lg:col-span-5 lg:col-start-8">
+          <li class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12.75 2C15.5784 2 16.9924 2.00023 17.8711 2.87891C18.7498 3.75759 18.75 5.17157 18.75 8V16C18.75 18.8284 18.7498 20.2424 17.8711 21.1211C16.9924 21.9998 15.5784 22 12.75 22H10.75C7.92157 22 6.50759 21.9998 5.62891 21.1211C4.75023 20.2424 4.75 18.8284 4.75 16V8C4.75 5.17157 4.75023 3.75759 5.62891 2.87891C6.50759 2.00023 7.92157 2 10.75 2H12.75ZM8.75 16.25C8.33579 16.25 8 16.5858 8 17C8 17.4142 8.33579 17.75 8.75 17.75H11.75C12.1642 17.75 12.5 17.4142 12.5 17C12.5 16.5858 12.1642 16.25 11.75 16.25H8.75ZM8.75 12.25C8.33579 12.25 8 12.5858 8 13C8 13.4142 8.33579 13.75 8.75 13.75H14.75C15.1642 13.75 15.5 13.4142 15.5 13C15.5 12.5858 15.1642 12.25 14.75 12.25H8.75ZM8.75 8.25C8.33579 8.25 8 8.58579 8 9C8 9.41421 8.33579 9.75 8.75 9.75H14.75C15.1642 9.75 15.5 9.41421 15.5 9C15.5 8.58579 15.1642 8.25 14.75 8.25H8.75Z" clip-rule="evenodd"/><path d="M3.37305 4.50879C3.24973 5.4262 3.24993 6.57181 3.25 7.90137V16.0986C3.24993 17.4284 3.24969 18.5747 3.37305 19.4922C3.37904 19.5368 3.38587 19.5816 3.39258 19.626C3.09656 19.5029 2.84617 19.3393 2.62891 19.1221C1.75023 18.2434 1.75 16.8284 1.75 14V10C1.75 7.17181 1.75026 5.75755 2.62891 4.87891C2.8462 4.66166 3.0965 4.49809 3.39258 4.375C3.38587 4.41944 3.37905 4.46416 3.37305 4.50879Z"/><path d="M20.1074 4.375C20.4035 4.49809 20.6538 4.66166 20.8711 4.87891C21.7497 5.75755 21.75 7.17181 21.75 10V14C21.75 16.8284 21.7498 18.2434 20.8711 19.1221C20.6538 19.3393 20.4034 19.5029 20.1074 19.626C20.1141 19.5816 20.121 19.5368 20.127 19.4922C20.2503 18.5747 20.2501 17.4284 20.25 16.0986V7.90137C20.2501 6.57181 20.2503 5.4262 20.127 4.50879C20.121 4.46416 20.1141 4.41944 20.1074 4.375Z"/></g></svg>
+            <h3 class="mt-4.5 text-h-xs">Утечка гостайны и ноу‑хау</h3>
+            <p class="copy mt-3 text-ash">Конструкторская документация, исходный код для ЧПУ и финансовые транзакции уходят во внешние API.</p>
+            <p class="copy mt-3">Всё обрабатывается внутри вашей серверной. Наружу не уходит ни байта.</p>
+          </li>
+          <li class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3 10C3 6.22876 3 4.34315 4.17157 3.17157C5.34315 2 7.22876 2 11 2H13C16.7712 2 18.6569 2 19.8284 3.17157C21 4.34315 21 6.22876 21 10V14C21 17.7712 21 19.6569 19.8284 20.8284C18.6569 22 16.7712 22 13 22H11C7.22876 22 5.34315 22 4.17157 20.8284C3 19.6569 3 17.7712 3 14V10ZM7.25 18C7.25 17.5858 7.58579 17.25 8 17.25H16C16.4142 17.25 16.75 17.5858 16.75 18C16.75 18.4142 16.4142 18.75 16 18.75H8C7.58579 18.75 7.25 18.4142 7.25 18ZM15.3553 6.30984C13.1338 5.89672 10.8663 5.89672 8.64474 6.30984L8.16897 6.39831C7.2887 6.562 6.76942 7.59158 7.10085 8.51607L7.84525 10.5925C7.95314 10.8934 8.2437 11.0592 8.52553 10.9806C8.70281 10.9311 8.88073 10.8855 9.05918 10.8437L8.41984 8.854C8.26351 8.36748 8.49027 7.83168 8.92632 7.65725C9.36237 7.48283 9.84259 7.73584 9.99892 8.22236L10.7514 10.5641C12.3304 10.41 13.9267 10.5488 15.4746 10.9806C15.7564 11.0592 16.047 10.8934 16.1548 10.5925L16.8992 8.51607C17.2307 7.59158 16.7114 6.562 15.8311 6.39831L15.3553 6.30984Z" clip-rule="evenodd"/></svg>
+            <h3 class="mt-4.5 text-h-xs">Нарушение 152‑ФЗ</h3>
+            <p class="copy mt-3 text-ash">Передавать персональные данные в публичные нейросети незаконно. Оборотные штрафы исчисляются миллионами рублей.</p>
+            <p class="copy mt-3">DLP фильтры, ролевой доступ RBAC и журнал каждого запроса закрывают требования регуляторов и СБ.</p>
+          </li>
+          <li class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path d="M12.75 2.75C12.75 2.33579 12.4142 2 12 2C11.5858 2 11.25 2.33579 11.25 2.75V6.75C11.25 7.16421 11.5858 7.5 12 7.5C12.4142 7.5 12.75 7.16421 12.75 6.75V2.75Z"/><path d="M8.7919 5.14692C9.17345 4.98571 9.35208 4.54571 9.19087 4.16416C9.02966 3.7826 8.58966 3.60398 8.2081 3.76519C4.70832 5.24386 2.25 8.70905 2.25 12.7501C2.25 18.1349 6.61522 22.5001 12 22.5001C17.3848 22.5001 21.75 18.1349 21.75 12.7501C21.75 8.70905 19.2917 5.24386 15.7919 3.76519C15.4103 3.60398 14.9703 3.7826 14.8091 4.16416C14.6479 4.54571 14.8265 4.98571 15.2081 5.14692C18.1722 6.39927 20.25 9.33293 20.25 12.7501C20.25 17.3065 16.5563 21.0001 12 21.0001C7.44365 21.0001 3.75 17.3065 3.75 12.7501C3.75 9.33293 5.82779 6.39927 8.7919 5.14692Z"/></g></svg>
+            <h3 class="mt-4.5 text-h-xs">Внешний «рубильник»</h3>
+            <p class="copy mt-3 text-ash">Зарубежные облачные сервисы и ИИ инфраструктуру могут отключить одной кнопкой в любой момент.</p>
+            <p class="copy mt-3">Открытые модели DeepSeek, Qwen и LLaMA работают автономно на вашем оборудовании.</p>
+          </li>
+          <li class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M11.2479 2C6.30929 2.36618 2.36618 6.30929 2 11.2479H4.98056C5.39592 11.2479 5.73264 11.5846 5.73264 12C5.73264 12.4154 5.39592 12.7521 4.98056 12.7521H2C2.36618 17.6907 6.30929 21.6338 11.2479 22V19.0194C11.2479 18.6041 11.5846 18.2674 12 18.2674C12.4154 18.2674 12.7521 18.6041 12.7521 19.0194V22C17.6907 21.6338 21.6338 17.6907 22 12.7521H19.0194C18.6041 12.7521 18.2674 12.4154 18.2674 12C18.2674 11.5846 18.6041 11.2479 19.0194 11.2479H22C21.6338 6.30929 17.6907 2.36618 12.7521 2V4.98056C12.7521 5.39592 12.4154 5.73264 12 5.73264C11.5846 5.73264 11.2479 5.39592 11.2479 4.98056V2ZM9.24236 12C9.24236 11.5846 9.57908 11.2479 9.99444 11.2479H11.2479V9.99444C11.2479 9.57908 11.5846 9.24236 12 9.24236C12.4154 9.24236 12.7521 9.57908 12.7521 9.99444V11.2479H14.0056C14.4209 11.2479 14.7576 11.5846 14.7576 12C14.7576 12.4154 14.4209 12.7521 14.0056 12.7521H12.7521V14.0056C12.7521 14.4209 12.4154 14.7576 12 14.7576C11.5846 14.7576 11.2479 14.4209 11.2479 14.0056V12.7521H9.99444C9.57908 12.7521 9.24236 12.4154 9.24236 12Z" clip-rule="evenodd"/></svg>
+            <h3 class="mt-4.5 text-h-xs">Галлюцинации и потеря времени</h3>
+            <p class="copy mt-3 text-ash">Модель из коробки уверенно ошибается в фактах и не знает вашей внутренней специфики.</p>
+            <p class="copy mt-3">RAG связывает модель с вашими регламентами, ГОСТами и репозиториями. Ответ опирается на ваш источник.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 4. Слоган ============ -->
+    <section class="section" aria-label="Главная идея" data-formation="scatter" data-alpha="0.3">
+      <div class="page">
+        <p class="tagline h-section max-w-5xl xl:text-h-lg" data-tagline>
+          Ваши данные остаются в&nbsp;вашей серверной. Интеллект работает внутри периметра и&nbsp;только <span data-accent>на&nbsp;вас.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ 5. Решения: три пакета зигзагом ============ -->
+    <section id="resheniya" class="section" aria-labelledby="packs-title">
+      <div class="page">
+        <div class="reveal max-w-4xl">
+          <p class="label">Решения</p>
+          <h2 id="packs-title" class="h-section mt-6">Три формата внедрения: от одной станции до изолированного кластера</h2>
+          <p class="copy mt-9 max-w-copy text-mist">Подбираем формат под задачу, объём данных и требования безопасности. Каждый начинается с пилота.</p>
+        </div>
+
+        <!-- Пакет 1: визуал слева -->
+        <article class="mt-24 grid items-center gap-9 lg:mt-30 lg:grid-cols-12">
+          <div class="reveal relative -mx-6 aspect-square sm:mx-auto sm:w-4/5 lg:col-span-5 lg:mx-0 lg:w-full" data-formation="core" aria-hidden="true">
+          </div>
+          <div class="reveal lg:col-span-6 lg:col-start-7">
+            <p class="label">01 · Быстрый старт</p>
+            <h3 class="h-pack mt-4.5">Локальная ИИ станция под ключ</h3>
+            <p class="copy mt-6 text-mist">Готовое рабочее место на ускорителе RTX 6000 Pro Blackwell с 96 ГБ видеопамяти. Ставится в кабинет или серверную и работает без интернета с первого дня.</p>
+            <ul class="copy mt-9 space-y-3">
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Анализ медкарт, историй болезни, КТ и МРТ внутри клиники</li>
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Работа с договорами и внутренними документами</li>
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Аналитика для руководителя без риска утечки</li>
+            </ul>
+            <dl class="mt-9 grid grid-cols-2 gap-6">
+              <div><dt class="text-caption uppercase text-ash">Для кого</dt><dd class="copy mt-1.5">Клиники, юристы, R&amp;D, топ‑менеджмент</dd></div>
+              <div><dt class="text-caption uppercase text-ash">Бюджет</dt><dd class="copy mt-1.5">около 2,5 млн ₽</dd></div>
+            </dl>
+            <button type="button" class="btn-ghost mt-9 text-bone" data-open-form data-package="Пакет 1. Локальная ИИ станция">Обсудить станцию <svg class="si" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M4 11.25C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H13.25V18C13.25 18.3034 13.4327 18.5768 13.713 18.6929C13.9932 18.809 14.3158 18.7449 14.5303 18.5304L20.5303 12.5304C20.671 12.3897 20.75 12.1989 20.75 12C20.75 11.8011 20.671 11.6103 20.5303 11.4697L14.5303 5.46969C14.3158 5.25519 13.9932 5.19103 13.713 5.30711C13.4327 5.4232 13.25 5.69668 13.25 6.00002V11.25H4Z"/></svg></button>
+          </div>
+        </article>
+
+        <!-- Пакет 2: визуал справа -->
+        <article class="mt-24 grid items-center gap-9 lg:mt-30 lg:grid-cols-12">
+          <div class="reveal relative -mx-6 aspect-square sm:mx-auto sm:w-4/5 lg:order-last lg:col-span-5 lg:col-start-8 lg:mx-0 lg:w-full" data-formation="ring" aria-hidden="true">
+          </div>
+          <div class="reveal lg:col-span-6">
+            <p class="label">02 · Для бизнеса · чаще выбирают</p>
+            <h3 class="h-pack mt-4.5">Корпоративный ИИ контур и RAG база знаний</h3>
+            <p class="copy mt-6 text-mist">Локальные модели DeepSeek, Qwen и LLaMA на серверах компании, подключённые к документам, CRM и репозиториям кода через векторную память.</p>
+            <ul class="copy mt-9 space-y-3">
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Поиск по документам, регламентам и базе знаний</li>
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Ассистент разработчика без выгрузки кода наружу</li>
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Комплаенс AML и KYC, кредитные досье, антифрод</li>
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Умный маршрутизатор запросов и защита ПДн по 152‑ФЗ</li>
+            </ul>
+            <dl class="mt-9 grid grid-cols-2 gap-6">
+              <div><dt class="text-caption uppercase text-ash">Для кого</dt><dd class="copy mt-1.5">Банки, финтех, ритейл, телеком, IT</dd></div>
+              <div><dt class="text-caption uppercase text-ash">Стек</dt><dd class="copy mt-1.5">vLLM · pgvector · RBAC · DLP</dd></div>
+            </dl>
+            <button type="button" class="btn-ghost mt-9 text-bone" data-open-form data-package="Пакет 2. Корпоративный ИИ контур и RAG">Обсудить контур <svg class="si" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M4 11.25C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H13.25V18C13.25 18.3034 13.4327 18.5768 13.713 18.6929C13.9932 18.809 14.3158 18.7449 14.5303 18.5304L20.5303 12.5304C20.671 12.3897 20.75 12.1989 20.75 12C20.75 11.8011 20.671 11.6103 20.5303 11.4697L14.5303 5.46969C14.3158 5.25519 13.9932 5.19103 13.713 5.30711C13.4327 5.4232 13.25 5.69668 13.25 6.00002V11.25H4Z"/></svg></button>
+          </div>
+        </article>
+
+        <!-- Пакет 3: визуал слева -->
+        <article class="mt-24 grid items-center gap-9 lg:mt-30 lg:grid-cols-12">
+          <div class="reveal relative -mx-6 aspect-square sm:mx-auto sm:w-4/5 lg:col-span-5 lg:mx-0 lg:w-full" data-formation="lattice" aria-hidden="true">
+          </div>
+          <div class="reveal lg:col-span-6 lg:col-start-7">
+            <p class="label">03 · Enterprise и госсектор</p>
+            <h3 class="h-pack mt-4.5">Спецконтур Air‑Gapped для ВПК и промышленности</h3>
+            <p class="copy mt-6 text-mist">Полностью изолированная инфраструктура Zero Trust на кластерах NVIDIA H100 и DGX со шлюзом безопасности AI Gateway.</p>
+            <ul class="copy mt-9 space-y-3">
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Генерация и проверка кода C/C++ для ЧПУ в песочнице</li>
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Поиск по секретным чертежам и ГОСТам</li>
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>Edge AI: поиск брака на конвейере и аварийная остановка станков</li>
+              <li class="flex gap-3"><svg class="si mt-1 text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8351 11.6296L9.20467 5.1999C8.79094 4.79869 8 5.04189 8 5.5703L8 18.4297C8 18.9581 8.79094 19.2013 9.20467 18.8001L15.8351 12.3704C16.055 12.1573 16.0549 11.8427 15.8351 11.6296Z"/></svg>DLP, ГОСТ шифрование, RBAC</li>
+            </ul>
+            <dl class="mt-9 grid grid-cols-2 gap-6">
+              <div><dt class="text-caption uppercase text-ash">Для кого</dt><dd class="copy mt-1.5">КБ, оборонные заводы, ведомства</dd></div>
+              <div><dt class="text-caption uppercase text-ash">Контур</dt><dd class="copy mt-1.5">H100 · DGX · 0 байт наружу</dd></div>
+            </dl>
+            <button type="button" class="btn-ghost mt-9 text-bone" data-open-form data-package="Пакет 3. Спецконтур Air-Gapped">Обсудить спецконтур <svg class="si" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M4 11.25C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H13.25V18C13.25 18.3034 13.4327 18.5768 13.713 18.6929C13.9932 18.809 14.3158 18.7449 14.5303 18.5304L20.5303 12.5304C20.671 12.3897 20.75 12.1989 20.75 12C20.75 11.8011 20.671 11.6103 20.5303 11.4697L14.5303 5.46969C14.3158 5.25519 13.9932 5.19103 13.713 5.30711C13.4327 5.4232 13.25 5.69668 13.25 6.00002V11.25H4Z"/></svg></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 6. Отрасли ============ -->
+    <section id="otrasli" class="section" aria-labelledby="ind-title" data-formation="scatter" data-alpha="0.3">
+      <div class="page grid gap-15 lg:grid-cols-12">
+        <div class="reveal lg:sticky lg:top-12 lg:col-span-5 lg:self-start">
+          <p class="label">Отрасли</p>
+          <h2 id="ind-title" class="h-section mt-6 lg:text-h-sm">Где цена ошибки выше цены внедрения</h2>
+          <p class="copy mt-9 max-w-copy text-mist">Работаем там, где вынос данных в публичное облако запрещён регламентом или законом.</p>
+        </div>
+        <div class="grid gap-15 sm:grid-cols-2 lg:col-span-6 lg:col-start-7">
+          <article class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.37752 5.08241C3 5.62028 3 7.21907 3 10.4167V11.9914C3 17.6294 7.23896 20.3655 9.89856 21.5273C10.62 21.8424 10.9807 22 12 22C13.0193 22 13.38 21.8424 14.1014 21.5273C16.761 20.3655 21 17.6294 21 11.9914V10.4167C21 7.21907 21 5.62028 20.6225 5.08241C20.245 4.54454 18.7417 4.02996 15.7351 3.00079L15.1623 2.80472C13.595 2.26824 12.8114 2 12 2C11.1886 2 10.405 2.26824 8.83772 2.80472L8.26491 3.00079C5.25832 4.02996 3.75503 4.54454 3.37752 5.08241ZM15.0595 10.4995C15.3353 10.1905 15.3085 9.71642 14.9995 9.44055C14.6905 9.16467 14.2164 9.19151 13.9405 9.50049L10.9286 12.8739L10.0595 11.9005C9.78358 11.5915 9.30947 11.5647 9.00049 11.8405C8.69151 12.1164 8.66467 12.5905 8.94055 12.8995L10.3691 14.4995C10.5114 14.6589 10.7149 14.75 10.9286 14.75C11.1422 14.75 11.3457 14.6589 11.488 14.4995L15.0595 10.4995Z" clip-rule="evenodd"/></svg>
+            <h3 class="mt-4.5 text-h-xs">ВПК, ОПК и госсектор</h3>
+            <p class="copy mt-3 text-ash">КБ, оборонные заводы и ведомства со сведениями под грифом: код для ЧПУ, поиск по ГОСТам и чертежам, аналитика госзакупок в изолированной сети.</p>
+          </article>
+          <article class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M20.9129 5.88886C21.25 6.39331 21.25 7.09554 21.25 8.5V21.25H21.75C22.1642 21.25 22.5 21.5858 22.5 22C22.5 22.4142 22.1642 22.75 21.75 22.75H1.75C1.33579 22.75 1 22.4142 1 22C1 21.5858 1.33579 21.25 1.75 21.25H2.25V8.5C2.25 7.09554 2.25 6.39331 2.58706 5.88886C2.73298 5.67048 2.92048 5.48298 3.13886 5.33706C3.58008 5.04224 4.17262 5.00529 5.25403 5.00066C5.24992 5.29206 5.24996 5.59655 5.24999 5.9105L5.25 6V7.25H4.25C3.83579 7.25 3.5 7.58579 3.5 8C3.5 8.41421 3.83579 8.75 4.25 8.75H5.25V10.25H4.25C3.83579 10.25 3.5 10.5858 3.5 11C3.5 11.4142 3.83579 11.75 4.25 11.75H5.25V13.25H4.25C3.83579 13.25 3.5 13.5858 3.5 14C3.5 14.4142 3.83579 14.75 4.25 14.75H5.25V21.25H6.75V6C6.75 4.11438 6.75 3.17157 7.33579 2.58579C7.92157 2 8.86438 2 10.75 2H12.75C14.6356 2 15.5784 2 16.1642 2.58579C16.75 3.17157 16.75 4.11438 16.75 6V21.25H18.25V14.75H19.25C19.6642 14.75 20 14.4142 20 14C20 13.5858 19.6642 13.25 19.25 13.25H18.25V11.75H19.25C19.6642 11.75 20 11.4142 20 11C20 10.5858 19.6642 10.25 19.25 10.25H18.25V8.75H19.25C19.6642 8.75 20 8.41421 20 8C20 7.58579 19.6642 7.25 19.25 7.25H18.25V6L18.25 5.91051C18.25 5.59655 18.2501 5.29206 18.246 5.00066C19.3274 5.00529 19.9199 5.04224 20.3611 5.33706C20.5795 5.48298 20.767 5.67048 20.9129 5.88886ZM12.5 19C12.5 18.5858 12.1642 18.25 11.75 18.25C11.3358 18.25 11 18.5858 11 19V21.25H12.5V19ZM9 15C9 14.5858 9.33579 14.25 9.75 14.25H13.75C14.1642 14.25 14.5 14.5858 14.5 15C14.5 15.4142 14.1642 15.75 13.75 15.75H9.75C9.33579 15.75 9 15.4142 9 15ZM9.75 11.25C9.33579 11.25 9 11.5858 9 12C9 12.4142 9.33579 12.75 9.75 12.75H13.75C14.1642 12.75 14.5 12.4142 14.5 12C14.5 11.5858 14.1642 11.25 13.75 11.25H9.75ZM9.25 7C9.25 5.48122 10.4812 4.25 12 4.25C13.5188 4.25 14.75 5.48122 14.75 7C14.75 8.51878 13.5188 9.75 12 9.75C10.4812 9.75 9.25 8.51878 9.25 7ZM10.75 7C10.75 6.30964 11.3096 5.75 12 5.75C12.6904 5.75 13.25 6.30964 13.25 7C13.25 7.69036 12.6904 8.25 12 8.25C11.3096 8.25 10.75 7.69036 10.75 7Z" clip-rule="evenodd"/></svg>
+            <h3 class="mt-4.5 text-h-xs">Промышленность и энергетика</h3>
+            <p class="copy mt-3 text-ash">Компьютерное зрение для контроля качества без стриминга видео в облако, подсказки инженерам по ремонту, управление процессами внутри периметра.</p>
+          </article>
+          <article class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M22 12C22 15.7712 21.9997 17.6566 20.8281 18.8281C19.6566 19.9997 17.7712 20 14 20H10C6.22876 20 4.34345 19.9997 3.17188 18.8281C2.0003 17.6566 2 15.7712 2 12C2 11.5581 2.00007 11.142 2.00195 10.75H21.998C21.9999 11.142 22 11.5581 22 12ZM6 15.25C5.58579 15.25 5.25 15.5858 5.25 16C5.25 16.4142 5.58579 16.75 6 16.75H10C10.4142 16.75 10.75 16.4142 10.75 16C10.75 15.5858 10.4142 15.25 10 15.25H6ZM12.5 15.25C12.0858 15.25 11.75 15.5858 11.75 16C11.75 16.4142 12.0858 16.75 12.5 16.75H14C14.4142 16.75 14.75 16.4142 14.75 16C14.75 15.5858 14.4142 15.25 14 15.25H12.5Z" clip-rule="evenodd"/><path d="M14 4C17.7711 4 19.6565 4.00038 20.8281 5.17188C21.6717 6.01542 21.9085 7.22882 21.9746 9.25H2.02637C2.0925 7.2289 2.3284 6.01541 3.17188 5.17188C4.34343 4.00032 6.22887 4 10 4H14Z"/></g></svg>
+            <h3 class="mt-4.5 text-h-xs">Финансы, телеком и IT</h3>
+            <p class="copy mt-3 text-ash">Локальные ассистенты кода без слива репозиториев, комплаенс контроль, кредитные досье, антифрод, аналитика CDR и биллинга.</p>
+          </article>
+          <article class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path d="M12 11.75C12.4142 11.75 12.75 12.0858 12.75 12.5V13.25H13.5C13.9142 13.25 14.25 13.5858 14.25 14C14.25 14.4142 13.9142 14.75 13.5 14.75H12.75V15.5C12.75 15.9142 12.4142 16.25 12 16.25C11.5858 16.25 11.25 15.9142 11.25 15.5V14.75H10.5C10.0858 14.75 9.75 14.4142 9.75 14C9.75 13.5858 10.0858 13.25 10.5 13.25H11.25V12.5C11.25 12.0858 11.5858 11.75 12 11.75Z"/><path fill-rule="evenodd" d="M12.0518 1.25C12.9502 1.24997 13.7001 1.25011 14.2949 1.33008C14.9225 1.41451 15.489 1.60031 15.9443 2.05566C16.3997 2.51102 16.5855 3.07747 16.6699 3.70508C16.7499 4.29985 16.75 5.04978 16.75 5.94824V6.02539C18.7712 6.09152 19.9846 6.32834 20.8281 7.17188C21.9997 8.34345 22 10.2288 22 14C22 17.7712 21.9997 19.6566 20.8281 20.8281C19.6566 21.9997 17.7712 22 14 22H10C6.22878 22 4.34345 21.9997 3.17188 20.8281C2.0003 19.6566 2 17.7712 2 14C2 10.2288 2.0003 8.34345 3.17188 7.17188C4.01542 6.32834 5.22882 6.09152 7.25 6.02539V5.94824C7.24997 5.04976 7.25011 4.29986 7.33008 3.70508C7.41451 3.07747 7.60031 2.51102 8.05566 2.05566C8.51102 1.60031 9.07747 1.41451 9.70508 1.33008C10.2999 1.25011 11.0498 1.24997 11.9482 1.25H12.0518ZM12 10C9.79086 10 8 11.7909 8 14C8 16.2091 9.79086 18 12 18C14.2091 18 16 16.2091 16 14C16 11.7909 14.2091 10 12 10ZM12 2.75C11.036 2.75 10.3883 2.75146 9.90527 2.81641C9.44388 2.87845 9.24652 2.98591 9.11621 3.11621C8.9859 3.24652 8.87845 3.44389 8.81641 3.90527C8.75146 4.38831 8.75 5.03599 8.75 6V6.00195C9.14203 6.00007 9.55807 6 10 6H14C14.4419 6 14.858 6.00007 15.25 6.00195V6C15.25 5.03599 15.2485 4.38831 15.1836 3.90527C15.1216 3.44389 15.0141 3.24652 14.8838 3.11621C14.7535 2.98591 14.5561 2.87845 14.0947 2.81641C13.6117 2.75146 12.964 2.75 12 2.75Z" clip-rule="evenodd"/></g></svg>
+            <h3 class="mt-4.5 text-h-xs">Медицина и фармацевтика</h3>
+            <p class="copy mt-3 text-ash">Рабочие станции для онкологов и хирургов: медкарты, истории болезни, КТ и МРТ без выхода данных за пределы клиники.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. Безопасность ============ -->
+    <section id="bezopasnost" class="section" aria-labelledby="sec-title">
+      <div class="page grid items-center gap-15 lg:grid-cols-12">
+        <div class="reveal relative -mx-6 aspect-square sm:mx-auto sm:w-4/5 lg:col-span-6 lg:mx-0 lg:w-full" data-formation="perimeter" aria-hidden="true">
+          <p class="label pointer-events-none absolute inset-x-0 bottom-3 text-center !text-ash">Ваш периметр · 0 байт наружу</p>
+        </div>
+        <div class="reveal lg:col-span-5 lg:col-start-8">
+          <p class="label">Архитектура и безопасность</p>
+          <h2 id="sec-title" class="h-section mt-6 lg:text-h-sm">Контур, который служба безопасности согласует</h2>
+          <p class="copy mt-9 text-mist">Сегодня сотрудники тайком загружают код и документы в публичные нейросети со своих телефонов. Мы даём ИБ легальную альтернативу с полной прозрачностью.</p>
+          <ol class="mt-9 text-h-2xs" aria-label="Путь запроса внутри контура">
+            <li class="flex items-baseline gap-4.5"><span class="text-caption text-saffron">01</span>Сотрудник входит через SSO</li>
+            <li class="mt-3 flex items-baseline gap-4.5"><span class="text-caption text-saffron">02</span>AI Gateway: DLP, роли, журнал</li>
+            <li class="mt-3 flex items-baseline gap-4.5"><span class="text-caption text-saffron">03</span>LLM отвечает по вашим данным через RAG</li>
+          </ol>
+        </div>
+      </div>
+
+      <ul class="page mt-24 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+        <li class="reveal">
+          <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.47715 2 2 6.48336 2 12.0139C2 17.2918 6.07759 21.6161 11.2503 22L11.2499 15.9387C9.67737 15.5949 8.5 14.1924 8.5 12.5146V12.0139C8.5 11.4608 8.94772 11.0125 9.5 11.0125H9.75V9.0097C9.75 8.59491 10.0858 8.25866 10.5 8.25866C10.9142 8.25866 11.25 8.59491 11.25 9.0097V11.0125H12.75V9.0097C12.75 8.59491 13.0858 8.25866 13.5 8.25866C13.9142 8.25866 14.25 8.59491 14.25 9.0097V11.0125H14.5C15.0523 11.0125 15.5 11.4608 15.5 12.0139V12.5146C15.5 14.1925 14.3226 15.595 12.7499 15.9388L12.7497 22C17.9224 21.6161 22 17.2918 22 12.0139C22 6.48336 17.5228 2 12 2Z"/></svg>
+          <h3 class="mt-4.5 text-h-2xs">Физическая изоляция</h3>
+          <p class="copy mt-3 text-ash">Air‑Gap без выхода в интернет, проверка с отключённым внешним кабелем</p>
+        </li>
+        <li class="reveal">
+          <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4ZM13.25 9C13.25 8.58579 13.5858 8.25 14 8.25H19C19.4142 8.25 19.75 8.58579 19.75 9C19.75 9.41421 19.4142 9.75 19 9.75H14C13.5858 9.75 13.25 9.41421 13.25 9ZM14.25 12C14.25 11.5858 14.5858 11.25 15 11.25H19C19.4142 11.25 19.75 11.5858 19.75 12C19.75 12.4142 19.4142 12.75 19 12.75H15C14.5858 12.75 14.25 12.4142 14.25 12ZM15.25 15C15.25 14.5858 15.5858 14.25 16 14.25H19C19.4142 14.25 19.75 14.5858 19.75 15C19.75 15.4142 19.4142 15.75 19 15.75H16C15.5858 15.75 15.25 15.4142 15.25 15ZM11 9C11 10.1046 10.1046 11 9 11C7.89543 11 7 10.1046 7 9C7 7.89543 7.89543 7 9 7C10.1046 7 11 7.89543 11 9ZM9 17C13 17 13 16.1046 13 15C13 13.8954 11.2091 13 9 13C6.79086 13 5 13.8954 5 15C5 16.1046 5 17 9 17Z" clip-rule="evenodd"/></svg>
+          <h3 class="mt-4.5 text-h-2xs">SSO и ролевой доступ</h3>
+          <p class="copy mt-3 text-ash">Каждый видит только те данные, на которые у него есть права</p>
+        </li>
+        <li class="reveal">
+          <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path d="M9.5 2C8.67157 2 8 2.67157 8 3.5V4.5C8 5.32843 8.67157 6 9.5 6H14.5C15.3284 6 16 5.32843 16 4.5V3.5C16 2.67157 15.3284 2 14.5 2H9.5Z"/><path fill-rule="evenodd" d="M6.5 4.03662C5.24209 4.10719 4.44798 4.30764 3.87868 4.87694C3 5.75562 3 7.16983 3 9.99826V15.9983C3 18.8267 3 20.2409 3.87868 21.1196C4.75736 21.9983 6.17157 21.9983 9 21.9983H15C17.8284 21.9983 19.2426 21.9983 20.1213 21.1196C21 20.2409 21 18.8267 21 15.9983V9.99826C21 7.16983 21 5.75562 20.1213 4.87694C19.552 4.30764 18.7579 4.10719 17.5 4.03662V4.5C17.5 6.15685 16.1569 7.5 14.5 7.5H9.5C7.84315 7.5 6.5 6.15685 6.5 4.5V4.03662ZM7 9.75C6.58579 9.75 6.25 10.0858 6.25 10.5C6.25 10.9142 6.58579 11.25 7 11.25H7.5C7.91421 11.25 8.25 10.9142 8.25 10.5C8.25 10.0858 7.91421 9.75 7.5 9.75H7ZM10.5 9.75C10.0858 9.75 9.75 10.0858 9.75 10.5C9.75 10.9142 10.0858 11.25 10.5 11.25H17C17.4142 11.25 17.75 10.9142 17.75 10.5C17.75 10.0858 17.4142 9.75 17 9.75H10.5ZM7 13.25C6.58579 13.25 6.25 13.5858 6.25 14C6.25 14.4142 6.58579 14.75 7 14.75H7.5C7.91421 14.75 8.25 14.4142 8.25 14C8.25 13.5858 7.91421 13.25 7.5 13.25H7ZM10.5 13.25C10.0858 13.25 9.75 13.5858 9.75 14C9.75 14.4142 10.0858 14.75 10.5 14.75H17C17.4142 14.75 17.75 14.4142 17.75 14C17.75 13.5858 17.4142 13.25 17 13.25H10.5ZM7 16.75C6.58579 16.75 6.25 17.0858 6.25 17.5C6.25 17.9142 6.58579 18.25 7 18.25H7.5C7.91421 18.25 8.25 17.9142 8.25 17.5C8.25 17.0858 7.91421 16.75 7.5 16.75H7ZM10.5 16.75C10.0858 16.75 9.75 17.0858 9.75 17.5C9.75 17.9142 10.0858 18.25 10.5 18.25H17C17.4142 18.25 17.75 17.9142 17.75 17.5C17.75 17.0858 17.4142 16.75 17 16.75H10.5Z" clip-rule="evenodd"/></g></svg>
+          <h3 class="mt-4.5 text-h-2xs">Журнал и SIEM</h3>
+          <p class="copy mt-3 text-ash">Лог каждого промпта и ответа, интеграция с вашей SIEM</p>
+        </li>
+        <li class="reveal">
+          <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M16.5 15C18.1499 15 18.9747 15.0001 19.4873 15.5127C19.9999 16.0253 20 16.8501 20 18.5C20 20.1499 19.9999 20.9747 19.4873 21.4873C18.9747 21.9999 18.1499 22 16.5 22C14.8501 22 14.0253 21.9999 13.5127 21.4873C13.0001 20.9747 13 20.1499 13 18.5C13 16.8501 13.0001 16.0253 13.5127 15.5127C14.0253 15.0001 14.8501 15 16.5 15ZM18.4678 16.9209C18.24 16.6933 17.8713 16.6933 17.6436 16.9209L15.7227 18.8418L15.3564 18.4766C15.1286 18.2489 14.76 18.2489 14.5322 18.4766C14.3044 18.7044 14.3044 19.074 14.5322 19.3018L15.3096 20.0791C15.5374 20.3069 15.907 20.3069 16.1348 20.0791L18.4678 17.7461C18.6956 17.5183 18.6956 17.1487 18.4678 16.9209Z" clip-rule="evenodd"/><path d="M12 13C13.24 13 14.4049 13.1846 15.415 13.5078C15.0415 13.5166 14.6918 13.5352 14.3799 13.5771C13.737 13.6636 13.0336 13.8707 12.4521 14.4521C11.8707 15.0336 11.6636 15.737 11.5771 16.3799C11.4995 16.9576 11.4999 17.6635 11.5 18.4141V18.5859C11.4999 19.3365 11.4995 20.0424 11.5771 20.6201C11.5937 20.7432 11.6154 20.8688 11.6426 20.9951C7.94288 20.8887 5 19.1406 5 17C5 14.7909 8.13401 13 12 13Z"/><path d="M12 2C14.2091 2 16 3.79086 16 6C16 8.20914 14.2091 10 12 10C9.79086 10 8 8.20914 8 6C8 3.79086 9.79086 2 12 2Z"/></g></svg>
+          <h3 class="mt-4.5 text-h-2xs">Human in the loop</h3>
+          <p class="copy mt-3 text-ash">Критические решения проверяет эксперт: за секунды вместо часов рутины</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ 8. Этапы ============ -->
+    <section id="etapy" class="section" aria-labelledby="steps-title" data-formation="scatter" data-alpha="0.3">
+      <div class="page">
+        <div class="reveal max-w-4xl">
+          <p class="label">Как работаем</p>
+          <h2 id="steps-title" class="h-section mt-6">От консультации до эксплуатации в три шага</h2>
+        </div>
+        <ol class="mt-24 grid gap-15 lg:grid-cols-3 lg:gap-12">
+          <li class="reveal">
+            <p class="font-display text-h-lg font-light text-ash/40">01</p>
+            <h3 class="mt-6 text-h-xs">Консультация и аудит задачи</h3>
+            <p class="copy mt-3 text-ash">Разбираем задачу, данные и требования ИБ. Фиксируем целевые метрики точности и «золотой набор» контрольных вопросов.</p>
+          </li>
+          <li class="reveal">
+            <p class="font-display text-h-lg font-light text-ash/40">02</p>
+            <h3 class="mt-6 text-h-xs">Пилот MVP за 2–3 недели</h3>
+            <p class="copy mt-3 text-ash">Разворачиваем базовую конфигурацию на ваших данных в закрытом контуре. Проверяем на золотом наборе и аудите отсутствия внешних сетевых вызовов.</p>
+          </li>
+          <li class="reveal">
+            <p class="font-display text-h-lg font-light text-ash/40">03</p>
+            <h3 class="mt-6 text-h-xs">Промышленная эксплуатация</h3>
+            <p class="copy mt-3 text-ash">Масштабируем на подразделения, подключаем системы, дорабатываем до целевых метрик. Несколько месяцев, оплата по принятым этапам.</p>
+          </li>
+        </ol>
+        <p class="reveal mt-24 max-w-4xl text-h-2xs sm:text-sub">
+          <span class="text-saffron">Право на выход.</span> Если после пилота система не даёт нужной точности или не проходит аудит, вы отказываетесь от второго этапа без штрафов.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ 9. Возражения по ролям ============ -->
+    <section class="section" aria-labelledby="obj-title" data-formation="scatter" data-alpha="0.3">
+      <div class="page">
+        <div class="reveal max-w-4xl">
+          <p class="label">Для тех, кто принимает решение</p>
+          <h2 id="obj-title" class="h-section mt-6">Три вопроса, которые нам задают первыми</h2>
+        </div>
+        <div class="mt-24 space-y-24">
+          <article class="reveal grid gap-6 lg:grid-cols-12">
+            <div class="lg:col-span-5">
+              <p class="label">Генеральный директор</p>
+              <h3 class="mt-4.5 font-display text-h-2xs font-light leading-snug sm:text-sub">«Слишком дорого на старте»</h3>
+            </div>
+            <p class="copy text-mist lg:col-span-6 lg:col-start-7 lg:pt-9">Квантованные модели и точечный файнтюнинг требуют в разы меньше мощностей при высокой точности в вашей узкой задаче. А один предотвращённый штраф за утечку ПДн или сохранённый проприетарный код сопоставим со стоимостью кластера.</p>
+          </article>
+          <article class="reveal grid gap-6 lg:grid-cols-12">
+            <div class="lg:col-span-5">
+              <p class="label">Директор по ИБ</p>
+              <h3 class="mt-4.5 font-display text-h-2xs font-light leading-snug sm:text-sub">«Служба безопасности не согласует»</h3>
+            </div>
+            <p class="copy text-mist lg:col-span-6 lg:col-start-7 lg:pt-9">Реальная дыра сейчас — теневое использование публичных нейросетей. Мы даём ИБ физически изолированный контур с SIEM, SSO, RBAC, DLP слоем и полным логом каждого промпта. ИБ становится союзником проекта.</p>
+          </article>
+          <article class="reveal grid gap-6 lg:grid-cols-12">
+            <div class="lg:col-span-5">
+              <p class="label">Технический директор</p>
+              <h3 class="mt-4.5 font-display text-h-2xs font-light leading-snug sm:text-sub">«Нейросети галлюцинируют»</h3>
+            </div>
+            <p class="copy text-mist lg:col-span-6 lg:col-start-7 lg:pt-9">Публичный чат бот учился на всём интернете. Мы ставим узкопрофильные модели вроде DeepSeek Coder и Qwen Coder и привязываем их к вашей верифицированной базе через RAG. Модель берёт факты из ваших документов.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10. Гарантии ============ -->
+    <section id="garantii" class="section" aria-labelledby="guar-title" data-formation="scatter" data-alpha="0.3">
+      <div class="page">
+        <div class="reveal max-w-4xl">
+          <p class="label">Гарантии</p>
+          <h2 id="guar-title" class="h-section mt-6">Риски закреплены на нашей стороне договора</h2>
+        </div>
+        <div class="mt-24 grid gap-15 lg:grid-cols-3 lg:gap-12">
+          <article class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.5924 3.20027C9.34888 3.4078 9.22711 3.51158 9.09706 3.59874C8.79896 3.79854 8.46417 3.93721 8.1121 4.00672C7.95851 4.03705 7.79903 4.04977 7.48008 4.07522C6.6787 4.13918 6.278 4.17115 5.94371 4.28923C5.17051 4.56233 4.56233 5.17051 4.28923 5.94371C4.17115 6.278 4.13918 6.6787 4.07522 7.48008C4.04977 7.79903 4.03705 7.95851 4.00672 8.1121C3.93721 8.46417 3.79854 8.79896 3.59874 9.09706C3.51158 9.22711 3.40781 9.34887 3.20027 9.5924C2.67883 10.2043 2.4181 10.5102 2.26522 10.8301C1.91159 11.57 1.91159 12.43 2.26522 13.1699C2.41811 13.4898 2.67883 13.7957 3.20027 14.4076C3.40778 14.6511 3.51158 14.7729 3.59874 14.9029C3.79854 15.201 3.93721 15.5358 4.00672 15.8879C4.03705 16.0415 4.04977 16.201 4.07522 16.5199C4.13918 17.3213 4.17115 17.722 4.28923 18.0563C4.56233 18.8295 5.17051 19.4377 5.94371 19.7108C6.278 19.8288 6.6787 19.8608 7.48008 19.9248C7.79903 19.9502 7.95851 19.963 8.1121 19.9933C8.46417 20.0628 8.79896 20.2015 9.09706 20.4013C9.22711 20.4884 9.34887 20.5922 9.5924 20.7997C10.2043 21.3212 10.5102 21.5819 10.8301 21.7348C11.57 22.0884 12.43 22.0884 13.1699 21.7348C13.4898 21.5819 13.7957 21.3212 14.4076 20.7997C14.6511 20.5922 14.7729 20.4884 14.9029 20.4013C15.201 20.2015 15.5358 20.0628 15.8879 19.9933C16.0415 19.963 16.201 19.9502 16.5199 19.9248C17.3213 19.8608 17.722 19.8288 18.0563 19.7108C18.8295 19.4377 19.4377 18.8295 19.7108 18.0563C19.8288 17.722 19.8608 17.3213 19.9248 16.5199C19.9502 16.201 19.963 16.0415 19.9933 15.8879C20.0628 15.5358 20.2015 15.201 20.4013 14.9029C20.4884 14.7729 20.5922 14.6511 20.7997 14.4076C21.3212 13.7957 21.5819 13.4898 21.7348 13.1699C22.0884 12.43 22.0884 11.57 21.7348 10.8301C21.5819 10.5102 21.3212 10.2043 20.7997 9.5924C20.5922 9.34887 20.4884 9.22711 20.4013 9.09706C20.2015 8.79896 20.0628 8.46417 19.9933 8.1121C19.963 7.95851 19.9502 7.79903 19.9248 7.48008C19.8608 6.6787 19.8288 6.278 19.7108 5.94371C19.4377 5.17051 18.8295 4.56233 18.0563 4.28923C17.722 4.17115 17.3213 4.13918 16.5199 4.07522C16.201 4.04977 16.0415 4.03705 15.8879 4.00672C15.5358 3.93721 15.201 3.79854 14.9029 3.59874C14.7729 3.51158 14.6511 3.40781 14.4076 3.20027C13.7957 2.67883 13.4898 2.41811 13.1699 2.26522C12.43 1.91159 11.57 1.91159 10.8301 2.26522C10.5102 2.4181 10.2043 2.67883 9.5924 3.20027ZM16.3735 9.86314C16.6913 9.5453 16.6913 9.03 16.3735 8.71216C16.0557 8.39433 15.5403 8.39433 15.2225 8.71216L10.3723 13.5624L8.77746 11.9676C8.45963 11.6498 7.94432 11.6498 7.62649 11.9676C7.30866 12.2854 7.30866 12.8007 7.62649 13.1186L9.79678 15.2889C10.1146 15.6067 10.6299 15.6067 10.9478 15.2889L16.3735 9.86314Z" clip-rule="evenodd"/></svg>
+            <h3 class="mt-4.5 text-h-xs">Гарантии в контракте</h3>
+            <ul class="copy mt-6 space-y-4.5 text-ash">
+              <li><span class="text-bone">Доводим до целевых метрик.</span> Гарантийный этап доработок длится, пока система не выйдет на согласованные показатели.</li>
+              <li><span class="text-bone">Изоляция подтверждается тестом</span> с физически отключённым внешним кабелем.</li>
+              <li><span class="text-bone">Без привязки к вендору.</span> Веса моделей, векторные базы и код агентов остаются вашими.</li>
+            </ul>
+          </article>
+          <article class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path d="M11 10H13C14.4142 10 15.1213 10 15.5607 10.4393C16 10.8787 16 11.5858 16 13V19C16 17.5858 16 16.8787 16.4393 16.4393C16.8787 16 17.5858 16 19 16C20.4142 16 21.1213 16 21.5607 16.4393C22 16.8787 22 17.5858 22 19V22H16H8H2C2 20.5858 2 19.8787 2.43934 19.4393C2.87868 19 3.58579 19 5 19C6.41421 19 7.12132 19 7.56066 19.4393C8 19.8787 8 20.5858 8 22V13C8 11.5858 8 10.8787 8.43934 10.4393C8.87868 10 9.58579 10 11 10Z"/><path d="M11.1459 3.02251C11.5259 2.34084 11.7159 2 12 2C12.2841 2 12.4741 2.34084 12.8541 3.02251L12.9524 3.19887C13.0603 3.39258 13.1143 3.48944 13.1985 3.55334C13.2827 3.61725 13.3875 3.64097 13.5972 3.68841L13.7881 3.73161C14.526 3.89857 14.895 3.98205 14.9828 4.26432C15.0706 4.54659 14.819 4.84072 14.316 5.42898L14.1858 5.58117C14.0429 5.74833 13.9714 5.83191 13.9392 5.93531C13.9071 6.03872 13.9179 6.15023 13.9395 6.37327L13.9592 6.57632C14.0352 7.36118 14.0733 7.75361 13.8435 7.92807C13.6136 8.10252 13.2682 7.94346 12.5773 7.62535L12.3986 7.54305C12.2022 7.45265 12.1041 7.40745 12 7.40745C11.8959 7.40745 11.7978 7.45265 11.6014 7.54305L11.4227 7.62535C10.7318 7.94346 10.3864 8.10252 10.1565 7.92807C9.92674 7.75361 9.96476 7.36118 10.0408 6.57632L10.0605 6.37327C10.0821 6.15023 10.0929 6.03872 10.0608 5.93531C10.0286 5.83191 9.95713 5.74833 9.81418 5.58117L9.68403 5.42898C9.18097 4.84072 8.92945 4.54659 9.01723 4.26432C9.10501 3.98205 9.47396 3.89857 10.2119 3.73161L10.4028 3.68841C10.6125 3.64097 10.7173 3.61725 10.8015 3.55334C10.8857 3.48944 10.9397 3.39258 11.0476 3.19887L11.1459 3.02251Z"/></g></svg>
+            <h3 class="mt-4.5 text-h-xs">Безопасный вход</h3>
+            <ul class="copy mt-6 space-y-4.5 text-ash">
+              <li><span class="text-bone">Двухэтапная сделка.</span> Сначала пилот за 2–3 недели, потом решение о промышленной эксплуатации.</li>
+              <li><span class="text-bone">Право на выход.</span> Не устроил пилот — второй этап отменяется без штрафов.</li>
+            </ul>
+          </article>
+          <article class="reveal">
+            <svg class="si icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M20.4105 9.86058C20.3559 9.8571 20.2964 9.85712 20.2348 9.85715L20.2194 9.85715H17.8015C15.8086 9.85715 14.1033 11.4382 14.1033 13.5C14.1033 15.5618 15.8086 17.1429 17.8015 17.1429H20.2194L20.2348 17.1429C20.2964 17.1429 20.3559 17.1429 20.4105 17.1394C21.22 17.0879 21.9359 16.4495 21.9961 15.5577C22.0001 15.4992 22 15.4362 22 15.3778L22 15.3619V11.6381L22 11.6222C22 11.5638 22.0001 11.5008 21.9961 11.4423C21.9359 10.5506 21.22 9.91209 20.4105 9.86058ZM17.5872 14.4714C18.1002 14.4714 18.5162 14.0365 18.5162 13.5C18.5162 12.9635 18.1002 12.5286 17.5872 12.5286C17.0741 12.5286 16.6581 12.9635 16.6581 13.5C16.6581 14.0365 17.0741 14.4714 17.5872 14.4714Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M20.2341 18.6C20.3778 18.5963 20.4866 18.7304 20.4476 18.8699C20.2541 19.562 19.947 20.1518 19.4542 20.6485C18.7329 21.3755 17.8183 21.6981 16.6882 21.8512C15.5902 22 14.1872 22 12.4158 22H10.3794C8.60803 22 7.20501 22 6.10697 21.8512C4.97692 21.6981 4.06227 21.3755 3.34096 20.6485C2.61964 19.9215 2.29953 18.9997 2.1476 17.8608C1.99997 16.7541 1.99999 15.3401 2 13.5548V13.4452C1.99998 11.6599 1.99997 10.2459 2.1476 9.13924C2.29953 8.00031 2.61964 7.07848 3.34096 6.35149C4.06227 5.62451 4.97692 5.30188 6.10697 5.14876C7.205 4.99997 8.60802 4.99999 10.3794 5L12.4158 5C14.1872 4.99998 15.5902 4.99997 16.6882 5.14876C17.8183 5.30188 18.7329 5.62451 19.4542 6.35149C19.947 6.84817 20.2541 7.43804 20.4476 8.13012C20.4866 8.26959 20.3778 8.40376 20.2341 8.4L17.8015 8.40001C15.0673 8.40001 12.6575 10.5769 12.6575 13.5C12.6575 16.4231 15.0673 18.6 17.8015 18.6L20.2341 18.6ZM5.61446 8.88572C5.21522 8.88572 4.89157 9.21191 4.89157 9.61429C4.89157 10.0167 5.21522 10.3429 5.61446 10.3429H9.46988C9.86912 10.3429 10.1928 10.0167 10.1928 9.61429C10.1928 9.21191 9.86912 8.88572 9.46988 8.88572H5.61446Z" clip-rule="evenodd"/><path d="M7.77668 4.02439L9.73549 2.58126C10.7874 1.80625 12.2126 1.80625 13.2645 2.58126L15.2336 4.03197C14.4103 3.99995 13.4909 3.99998 12.4829 4H10.3123C9.39123 3.99998 8.5441 3.99996 7.77668 4.02439Z"/></g></svg>
+            <h3 class="mt-4.5 text-h-xs">Финансовая защита</h3>
+            <ul class="copy mt-6 space-y-4.5 text-ash">
+              <li><span class="text-bone">Оплата по факту приёмки.</span> Финальный акт подписывается после проверки на золотом наборе и аудита no egress.</li>
+              <li><span class="text-bone">Возврат аванса</span> за внедрение, если по нашей вине не обеспечена автономность или метрики из ТЗ.</li>
+              <li><span class="text-bone">Оборудование остаётся у вас</span> как ликвидный актив на балансе.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 11. FAQ ============ -->
+    <section id="faq" class="section" aria-labelledby="faq-title" data-formation="scatter" data-alpha="0.3">
+      <div class="page grid gap-15 lg:grid-cols-12">
+        <div class="reveal lg:sticky lg:top-12 lg:col-span-4 lg:self-start">
+          <p class="label">Вопросы</p>
+          <h2 id="faq-title" class="h-section mt-6 lg:text-h-sm">Частые вопросы</h2>
+          <p class="copy mt-9 text-mist">Не нашли ответ? Спросите на консультации.</p>
+          <button type="button" class="btn-ghost mt-6 text-bone" data-open-form>Задать вопрос <svg class="si" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M4 11.25C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H13.25V18C13.25 18.3034 13.4327 18.5768 13.713 18.6929C13.9932 18.809 14.3158 18.7449 14.5303 18.5304L20.5303 12.5304C20.671 12.3897 20.75 12.1989 20.75 12C20.75 11.8011 20.671 11.6103 20.5303 11.4697L14.5303 5.46969C14.3158 5.25519 13.9932 5.19103 13.713 5.30711C13.4327 5.4232 13.25 5.69668 13.25 6.00002V11.25H4Z"/></svg></button>
+        </div>
+        <div class="reveal space-y-3 lg:col-span-7 lg:col-start-6" id="faq-list">
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Чем это отличается от подписки на облачный ИИ?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">Облачный сервис обрабатывает запросы на чужих серверах. Мы разворачиваем модели на вашем оборудовании внутри периметра: данные не покидают серверную, доступ к сервису нельзя отключить извне, а модель отвечает по вашим документам.</div>
+          </details>
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Как проверить, что данные не уходят за периметр?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">Приёмка включает тест с физически отключённым внешним кабелем и аудит отсутствия внешних сетевых вызовов (no egress). Пока проверка не пройдена, финальный акт не подписывается.</div>
+          </details>
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Какое оборудование понадобится?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">От одной рабочей станции на RTX 6000 Pro Blackwell до кластеров NVIDIA H100 и DGX. Квантованные модели снижают требования к мощностям. Возможность использовать ваше текущее оборудование оцениваем на консультации.</div>
+          </details>
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Сколько длится внедрение?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">Пилот MVP на ваших данных занимает 2–3 недели. Промышленная эксплуатация с подключением систем и масштабированием длится несколько месяцев, сроки фиксируем в ТЗ.</div>
+          </details>
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Что будет, если пилот нас не устроит?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">Вы вправе отказаться от второго этапа без штрафных санкций. Если по нашей вине не обеспечена автономность контура или метрики из ТЗ, мы возвращаем аванс за работы по внедрению. Поставленное оборудование остаётся у вас.</div>
+          </details>
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Какие модели вы используете?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">Открытые архитектуры DeepSeek, Qwen и LLaMA. Для кода на C++ и ЧПУ — узкопрофильные DeepSeek Coder и Qwen Coder. Модель выбираем под задачу и оборудование.</div>
+          </details>
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Как вы снижаете риск ошибок модели?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">Модель отвечает по вашей верифицированной базе знаний через RAG, а качество измеряем на золотом наборе контрольных вопросов. Критические решения проходят финальную проверку экспертом.</div>
+          </details>
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Кому принадлежит результат?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">Вам. Веса моделей, векторные базы (PostgreSQL с pgvector, Qdrant, Milvus) и код агентов остаются на вашем оборудовании в вашей собственности.</div>
+          </details>
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Работаете ли вы с режимом гостайны?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">Спецконтур Air‑Gapped проектируется под такие требования: полная изоляция, Zero Trust, ГОСТ шифрование и ролевой доступ. Порядок допуска и требования к документации обсуждаем на консультации.</div>
+          </details>
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-start justify-between gap-6 py-4.5 text-h-2xs transition duration-300 ease-brand hover:text-saffron">Как проходит консультация?<svg class="si faq-icon mt-1 shrink-0 text-h-2xs text-saffron transition duration-500 ease-brand" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z" clip-rule="evenodd"/></svg></summary>
+            <div class="copy max-w-2xl pb-6 text-mist">Оставьте название компании, почту и телефон. После отправки откроется чат с нами в Telegram с готовой заявкой: нажмите «Отправить» и добавьте пару слов о задаче. Дальше согласуем время созвона с инженером.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 12. Финальный CTA ============ -->
+    <section class="section relative overflow-hidden" aria-labelledby="final-title">
+      <div class="page grid items-center gap-9 lg:grid-cols-12">
+        <div class="reveal relative z-10 lg:col-span-7">
+          <p class="label">Консультация</p>
+          <h2 id="final-title" class="h-display mt-6">Обсудим ваш контур</h2>
+          <p class="copy mt-9 max-w-copy text-mist">Расскажите, какие данные и процессы хотите доверить ИИ. Предложим формат пилота и оценим оборудование.</p>
+          <button type="button" class="btn-iris mt-9" data-open-form>Получить консультацию <svg class="si text-2xl" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12.4697 8.46967C12.7626 8.17678 13.2374 8.17678 13.5303 8.46967L16.5303 11.4697C16.8232 11.7626 16.8232 12.2374 16.5303 12.5303L13.5303 15.5303C13.2374 15.8232 12.7626 15.8232 12.4697 15.5303C12.1768 15.2374 12.1768 14.7626 12.4697 14.4697L14.1893 12.75H8C7.58579 12.75 7.25 12.4142 7.25 12C7.25 11.5858 7.58579 11.25 8 11.25H14.1893L12.4697 9.53033C12.1768 9.23744 12.1768 8.76256 12.4697 8.46967Z" clip-rule="evenodd"/></svg></button>
+        </div>
+        <div class="reveal relative -mx-6 aspect-square lg:col-span-5 lg:mx-0" data-formation="atom" aria-hidden="true">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Подвал ============ -->
+  <footer class="pb-12 pt-15">
+    <div class="page flex flex-col gap-9 lg:flex-row lg:items-center lg:justify-between">
+      <img src="assets/img/logo-dark.webp" alt="Цифровая защита" width="196" height="60" loading="lazy" class="h-12 w-auto self-start">
+      <nav class="flex flex-wrap gap-x-7.5 gap-y-3" aria-label="Ссылки в подвале">
+        <a href="#resheniya" class="nav-link">Решения</a>
+        <a href="#bezopasnost" class="nav-link">Безопасность</a>
+        <a href="#garantii" class="nav-link">Гарантии</a>
+        <a href="privacy.html" class="nav-link">Политика конфиденциальности</a>
+      </nav>
+    </div>
+    <p class="page copy mt-12 text-sm text-ash">ООО «Цифровая Защита» · ИНН 9726063134 · 2023 г.</p>
+  </footer>
+
+  <!-- ============ Форма заявки ============ -->
+  <div class="modal fixed inset-0 z-[70] overflow-y-auto bg-void/90 backdrop-blur-xl" id="lead-modal" role="dialog" aria-modal="true" aria-labelledby="lead-title" aria-hidden="true">
+    <div class="flex min-h-full items-center justify-center px-6 py-24">
+      <div class="modal-box relative w-full max-w-xl">
+        <button type="button" class="fixed right-6 top-6 inline-flex h-12 w-12 items-center justify-center text-[28px] text-ash transition duration-300 ease-brand hover:text-bone" data-close-form aria-label="Закрыть форму"><svg class="si" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM8.96963 8.96965C9.26252 8.67676 9.73739 8.67676 10.0303 8.96965L12 10.9393L13.9696 8.96967C14.2625 8.67678 14.7374 8.67678 15.0303 8.96967C15.3232 9.26256 15.3232 9.73744 15.0303 10.0303L13.0606 12L15.0303 13.9696C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0303 15.0303C9.73742 15.3232 9.26254 15.3232 8.96965 15.0303C8.67676 14.7374 8.67676 14.2625 8.96965 13.9697L10.9393 12L8.96963 10.0303C8.67673 9.73742 8.67673 9.26254 8.96963 8.96965Z" clip-rule="evenodd"/></svg></button>
+
+        <div id="lead-form-wrap">
+          <p class="label">Консультация</p>
+          <h2 id="lead-title" class="h-pack mt-4.5">Оставьте контакты, и мы откроем Telegram</h2>
+          <p class="copy mt-6 text-mist">После отправки откроется чат с нами и готовой заявкой. Останется нажать «Отправить».</p>
+
+          <form id="lead-form" class="mt-9 space-y-4.5" novalidate>
+            <input type="hidden" name="package" id="lead-package">
+            <div class="hidden" aria-hidden="true"><label>Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <div>
+              <label for="lead-company" class="label mb-3 block pl-6 !text-ash">Название компании</label>
+              <input id="lead-company" name="company" type="text" class="field" autocomplete="organization" placeholder="АО «Уралмашпроект»" required>
+              <p class="field-error" id="err-company">Укажите название компании.</p>
+            </div>
+            <div>
+              <label for="lead-email" class="label mb-3 block pl-6 !text-ash">Рабочая почта</label>
+              <input id="lead-email" name="email" type="email" class="field" autocomplete="email" inputmode="email" placeholder="ivanov@company.ru" required>
+              <p class="field-error" id="err-email">Проверьте адрес: нужны @ и домен, например ivanov@company.ru.</p>
+            </div>
+            <div>
+              <label for="lead-phone" class="label mb-3 block pl-6 !text-ash">Телефон</label>
+              <input id="lead-phone" name="phone" type="tel" class="field" autocomplete="tel" inputmode="tel" placeholder="+7 900 123 45 67" required>
+              <p class="field-error" id="err-phone">Введите номер полностью, не меньше 10 цифр.</p>
+            </div>
+            <div class="pt-3">
+              <label class="copy flex cursor-pointer gap-3 text-sm text-mist">
+                <input id="lead-consent" name="consent" type="checkbox" class="mt-0.5 h-5 w-5 shrink-0 accent-iris" required>
+                <span>Согласен на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank" class="text-saffron underline underline-offset-4">политикой конфиденциальности</a></span>
+              </label>
+              <p class="field-error !pl-8" id="err-consent">Без согласия мы не можем принять заявку.</p>
+            </div>
+            <p class="hidden text-sm text-saffron" id="form-error" role="alert"></p>
+            <button type="submit" class="btn-iris mt-3 w-full" id="lead-submit">Отправить и перейти в Telegram</button>
+          </form>
+        </div>
+
+        <div id="lead-success" class="hidden text-center" role="status">
+          <svg class="si text-h-lg text-saffron" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M18.6357 15.6701L20.3521 10.5208C21.8516 6.02242 22.6013 3.77322 21.414 2.58595C20.2268 1.39869 17.9776 2.14842 13.4792 3.64788L8.32987 5.36432C4.69923 6.57453 2.88392 7.17964 2.36806 8.06698C1.87731 8.91112 1.87731 9.95369 2.36806 10.7978C2.88392 11.6852 4.69923 12.2903 8.32987 13.5005C8.77981 13.6505 9.28601 13.5434 9.62294 13.2096L15.1286 7.75495C15.4383 7.44808 15.9382 7.45041 16.245 7.76015C16.5519 8.06989 16.5496 8.56975 16.2398 8.87662L10.8231 14.2432C10.4518 14.6111 10.3342 15.1742 10.4995 15.6701C11.7097 19.3007 12.3148 21.1161 13.2022 21.6319C14.0463 22.1227 15.0889 22.1227 15.933 21.6319C16.8204 21.1161 17.4255 19.3008 18.6357 15.6701Z"/></svg>
+          <h2 class="mt-6 text-h-sm" id="lead-success-title">Заявка готова</h2>
+          <p class="copy mx-auto mt-4.5 max-w-copy text-mist" id="lead-success-text">Открываем Telegram с готовой заявкой.</p>
+          <a href="#" class="btn-iris mt-9" id="lead-tg-link" target="_blank" rel="noopener">Открыть Telegram <svg class="si text-lg" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path d="M17.4975 18.4851L20.6281 9.09378C21.419 6.72107 21.9594 5.1 21.9978 3.97919C22.0108 3.60165 21.5845 3.47624 21.3173 3.74336L6.85855 18.2022C6.62519 18.4355 6.6807 18.8286 6.99826 18.9185C7.02946 18.9273 7.0609 18.9356 7.09257 18.9433C7.59254 19.0657 8.24578 18.977 9.5522 18.7997L9.62363 18.79C9.99191 18.74 10.1761 18.715 10.3529 18.7257C10.6738 18.7451 10.9838 18.8496 11.251 19.0286C11.3981 19.1271 11.5295 19.2586 11.7923 19.5213L12.0436 19.7726C13.5539 21.2828 14.309 22.0379 15.1101 21.9986C15.3309 21.9877 15.5479 21.9365 15.7503 21.8475C16.4844 21.5244 16.8221 20.5113 17.4975 18.4851Z"/><path d="M14.906 3.37194L5.57477 6.48223C3.49295 7.17615 2.45203 7.5231 2.13608 8.28642C2.06182 8.46582 2.01692 8.65601 2.00311 8.84968C1.94433 9.6737 2.72018 10.4495 4.27188 12.0012L4.55451 12.2838C4.80921 12.5385 4.93655 12.6658 5.03282 12.8076C5.22269 13.0871 5.33046 13.4143 5.34393 13.752C5.35076 13.9232 5.32403 14.1013 5.27057 14.4575C5.07488 15.7613 4.97703 16.4131 5.0923 16.9148C5.09632 16.9322 5.1005 16.9497 5.10484 16.967C5.18629 17.292 5.58551 17.3539 5.82242 17.117L20.2567 2.68271C20.5238 2.41559 20.3984 1.9893 20.0209 2.00224C18.9 2.04066 17.2788 2.58102 14.906 3.37194Z"/></g></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Уведомление о cookies -->
+  <div id="cookie" class="fixed inset-x-6 bottom-6 z-[60] mx-auto hidden max-w-2xl flex-col items-start gap-4.5 rounded-pill bg-void/90 p-6 ring-1 ring-bone/15 backdrop-blur-xl sm:flex-row sm:items-center" role="region" aria-label="Уведомление о cookies">
+    <p class="copy text-sm text-mist">Сайт использует cookies и веб‑аналитику, чтобы улучшать страницу. Подробнее в <a href="privacy.html" class="text-saffron underline underline-offset-4">политике</a>.</p>
+    <button type="button" class="btn-ghost shrink-0 text-bone" id="cookie-ok">Понятно</button>
+  </div>
+
+  <script src="assets/js/field.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
